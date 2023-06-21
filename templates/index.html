@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AriQR: QR creator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<style>
+
+    body {
+         background-color: rgb(169, 206, 255);
+        }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <h1>AriQR</h1>
+        <hr>
+        <h3>QR Creator</h3>
+        {% if message %}
+            <div class="alert alert-primary" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="username">URL:</label>
+                <input type="text" class="form-control" id="url" name="url">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+
+    {% if show %}
+    <div id="image-container" style="text-align: center;">
+        <img id="image" src="{{ url_for('static', filename='output/qr_code.png') }}" alt="Image">
+    </div>
+    {% endif %}
+
+
+</body>
+
+
+
+</html>
