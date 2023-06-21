@@ -1,4 +1,5 @@
 -page footer 
 -app deployment on host
 -viewer counter
+-add image download button
 -show qr with background image of that website instead of white
