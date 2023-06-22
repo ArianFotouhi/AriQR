@@ -14,7 +14,10 @@
 
 <body>
     <div class="container mt-5">
-        <h1>AriQR</h1>
+        <h1>
+            AriQR
+            <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgjbae1212%2Fhit-counter&count_bg=%230C0C37&title_bg=%232D62FF&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true"/></a>
+        </h1>
         <hr>
         <h3>QR Creator</h3>
         {% if message %}
@@ -36,6 +39,11 @@
     <div id="image-container" style="text-align: center;">
         <img id="image" src="{{ url_for('static', filename='output/qr_code.png') }}" alt="Image">
     </div>
+
+    <a href="{{ url_for('static', filename='output/qr_code.png') }}" download class="btn btn-primary">
+        <i class="fas fa-download"></i> Download Image
+    </a>
+      
     {% endif %}
 
 
