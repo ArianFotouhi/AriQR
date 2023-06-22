@@ -3,7 +3,12 @@
 <head>
     <title>AriQR: QR creator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
+
 
 <style>
 
@@ -34,20 +39,38 @@
 
         </form>
     </div>
+    <div class="container" style="padding: 10px;">
+         {% if show %}
+        <div id="image-container" style="text-align: center;">
+            <img id="image" src="{{ url_for('static', filename='output/qr_code.png') }}" alt="Image">
+        </div>
 
-    {% if show %}
-    <div id="image-container" style="text-align: center;">
-        <img id="image" src="{{ url_for('static', filename='output/qr_code.png') }}" alt="Image">
+        <a href="{{ url_for('static', filename='output/qr_code.png') }}" download class="btn btn-primary">
+            <i class="fas fa-download"></i> Download Image
+        </a>
+        
+        {% endif %}
     </div>
 
-    <a href="{{ url_for('static', filename='output/qr_code.png') }}" download class="btn btn-primary">
-        <i class="fas fa-download"></i> Download Image
-    </a>
-      
-    {% endif %}
 
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; AriQR 2023</p>
+        </div>
+        <div class="col-md-6">
+          <div class="social-icons">
+            <a href="https://ca.linkedin.com/in/arian-fotouhi" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/ArianFotouhi/" target="_blank"><i class="fa fa-github"></i></a>
+            <a href="https://www.arianfotouhi.com/" target="_blank"><i class="fa fa-globe"></i></a>
+            <a href="https://www.instagram.com/arian.fotouhi/" target="_blank"><i class="fa fa-instagram"></i></a>
 
-</body>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer></body>
 
 
 
