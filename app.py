@@ -21,7 +21,7 @@ def login():
         password = request.form['password']
         if authenticate(username, password):
             session["username"] = username
-            return redirect('/home')
+            return redirect('/')
         else:
             return render_template("login.html", error="Invalid username or password")
     return render_template("login.html")
