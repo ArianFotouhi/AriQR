@@ -1,18 +1,12 @@
-import qrcode
+
 from flask import Flask, render_template, request, redirect, session, jsonify
-import os
+from authentication import Authentication
+from utils import remove_file,generate_qr_code
 
-def remove_file(file_path):
-    if os.path.exists(file_path):
-        os.remove(file_path)
+authenticate = Authentication().authenticate
 
-def generate_qr_code(url, output_path):
-    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=4)
-    qr.add_data(url)
-    qr.make(fit=True)
 
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save(output_path)
+
 
 app = Flask(__name__)
 app.secret_key = "!241$gariqr"
@@ -20,9 +14,21 @@ app.secret_key = "!241$gariqr"
 file_path = "output/qr_code.png"
 remove_file(file_path)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if authenticate(username, password):
+            session["username"] = username
+            return redirect('/home')
+        else:
+            return render_template("login.html", error="Invalid username or password")
+    return render_template("login.html")
+
 
 @app.route('/', methods=['GET', 'POST'])
-def login():
+def home():
     show = False
 
 
